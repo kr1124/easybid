@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판</title>
+
+    <link rel="stylesheet" href="/css/list.css">
+</head>
+
+<body>
+    <header>
+        <h1>게시판</h1>
+    </header>
+
+    <main>
+        <div>
+            <table class="board-list">
+                <thead>
+                    <tr>
+                        <th style="width: 10%;">번호</th>
+                        <th style="width: 45%;">제목</th>
+                        <th style="width: 15%;">작성자</th>
+                        <th style="width: 20%;">작성일</th>
+                        <th style="width: 10%;">조회수</th>
+                    </tr>
+                </thead>
+                <!-- 글 리스트 영역 -->
+                <tbody id="postList" th:if="${boardList != null}">
+                    <tr th:each="board : ${boardList.content}">
+                        <td>
+                            <a th:href="@{/board/{id}(id=${board.id})}" th:text="${board.id}" class="no-underline"></a> <!-- 번호 -->
+                        </td>
+                        <td>
+                            <a th:href="@{/board/{id}(id=${board.id})}" th:text="${board.title}" class="no-underline"></a> <!-- 제목 -->
+                        </td>
+                        <td>
+                            <a th:href="@{/board/{id}(id=${board.id})}" th:text="${board.user}" class="no-underline"></a> <!-- 작성자 -->
+                        </td>
+                        <td>
+                            <a th:href="@{/board/{id}(id=${board.id})}" th:text="${#temporals.format(board.date, 'yyyy-MM-dd')}" class="no-underline"></a> <!-- 작성일 -->
+                        </td>
+                        <td>
+                            <a th:href="@{/board/{id}(id=${board.id})}" th:text="${board.view}" class="no-underline"></a> <!-- 조회수 -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 페이지 이동 부분 -->
+        <div class="pagination">
+            <a th:if="${boardList.hasPrevious()}" th:href="@{/board/list(page=${boardList.number - 1})}">이전</a>
+            <span th:text="${boardList.number + 1}"></span> / <span th:text="${boardList.totalPages}"></span>
+            <a th:if="${boardList.hasNext()}" th:href="@{/board/list(page=${boardList.number + 1})}">다음</a>
+        </div>
+
+        <div class="write-div">
+            <a href="/board/new">
+                <button class="write-btn">글쓰기</button>
+            </a>
+        </div>
+    </main>
+
+
+    <footer>
+        <p>&copy; 2025 게시판</p>
+    </footer>
+</body>
+
+<script>
+
+</script>
+
+</html>
