@@ -1,0 +1,11 @@
+.no-underline {
+    text-decoration: none;
+    /* 밑줄 제거 */
+    color: inherit;
+    /* 부모 요소의 글씨 색상 사용 */
+}
+
+.no-underline:hover {
+    /* text-decoration: underline; */
+    /* 호버 시 밑줄 추가 (선택 사항) */
+}

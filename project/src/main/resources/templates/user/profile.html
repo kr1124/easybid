@@ -1,28 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>마이페이지</title>
 
     <link rel="stylesheet" href="/css/general.css">
-    <link rel="stylesheet" href="/css/header.css">
 </head>
+
 <body>
-    
+
     <!-- 헤더 포함 -->
     <header th:replace="fragments/header.html :: header"></header>
 
-    <!-- 네비게이션 포함 -->
-    <!-- <nav th:replace="fragments/nav.html :: nav" style="width: 200px; margin-right: 20px;"></nav> -->
+    <div>
+        <label for="userEmail">이메일</label>
+        <input type="text" id="userEmail" th:value="${user.userEmail}" disabled>
 
-    <!-- 페이지 콘텐츠 -->
-    <main>
-        
-    </main>
+        <label for="userName">이름</label>
+        <input type="text" id="userName" th:field="${user.userName}" disabled>
+    </div>
 
     <!-- 푸터 포함 -->
     <footer th:replace="fragments/footer.html :: footer"></footer>
-
 </body>
+
 </html>

@@ -1,0 +1,19 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 15px;
+    
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    margin: 2px;
+    /* 페이지 가장자리에 여백 추가 */
+}
+
+.logo {
+    font-family: 'Caveat', cursive;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--cta-color); /*#ff6f91*/
+}
